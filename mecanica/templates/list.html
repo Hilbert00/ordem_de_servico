@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block title %}Cadastro - Teteu Pitstop{% endblock %} {% block content %}
+
+{% for section in data %}
+
+<div class="mb-5">
+    <h2 style="font-size: 4em; margin-bottom: 2rem">{{section.title}}</h2>
+    <div class="container">
+        <div class="row">
+            {% for elements in section.data %}
+            <div class="col-4 mb-4">
+                <div class="card">
+                    {% for element in elements %}
+
+                    {% if element.name == "Nome" or element.name == "Modelo" %}
+                    <h5 class="card-header">{{element.value}}</h5>
+                    {% endif %}
+                    
+                    {% if element.name == "Descrição" %}
+                    <div class="card-body">
+                        <p class="card-text">{{element.value}}</p>
+                    </div>
+                    {% endif %}
+
+                    {% endfor %}
+
+                    <ul class="list-group list-group-flush">
+                        {% for element in elements %}
+
+                        {% if element.name != "Nome" and element.name != "Descrição" and element.name != "Modelo" %}
+                            <li class="list-group-item">{{element.name}}: {{element.value}}</li>
+                        {% endif %}
+                            
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+{% endblock %}

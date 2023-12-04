@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+    font-family: "Poppins", serif;
+}
+
+header {
+    background-color: #cf1010;
+    padding: 1em 0;
+}
+
+#dashboard-title {
+    color: #ededed;
+    font-size: 64px;
+    font-weight: 800;
+    text-align: center;
+    text-decoration: none;
+}
+
+#dashboard-button {
+    background-color: #fff;
+    color: #cf1010;
+    font-size: 1.5em;
+    font-weight: 600;
+    transition: all 150ms;
+}
+
+#dashboard-button:hover {
+    scale: 1.05;
+}
+
+h2 {
+    color: #1e1e1e;
+    font-weight: 700;
+    text-align: center;
+}
+
+input {
+    border-radius: 12px;
+    border: 2px solid #b3b3b3;
+    color: #b3b3b3;
+    font-size: 1.5em;
+}
+
+.home-card {
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 12px;
+    transition: all 150ms;
+}
+
+.home-card:hover {
+    scale: 1.05;
+}
+
+.home-card div {
+    padding: 1.5em;
+}
+
+.home-card h2 {
+    align-items: center;
+    color: #fff;
+    display: flex;
+    font-size: 2em;
+    font-weight: 700;
+    height: 2.5em;
+    justify-content: center;
+    text-align: center;
+}
+
+.home-card a {
+    background-color: #fff;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.add-form div:nth-child(2n) {
+    margin-left: auto;
+}
+
+.add-form div:nth-child(2n-1) {
+    margin-right: auto;
+}

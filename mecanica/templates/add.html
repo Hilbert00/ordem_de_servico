@@ -1,0 +1,60 @@
+{% extends "base.html" %} {% block title %}Cadastro - Teteu Pitstop{% endblock %} {% block content %}
+
+{% if message %}
+<div class="alert alert-{{message.type}}" style="margin-top: -3em;">{{message.txt}}</div>
+{% endif %}
+
+<h2 style="font-size: 4em; margin-bottom: 2rem">Cadastro de {{title}}</h2>
+
+<form method="post" class="container-sm d-flex flex-column gap-5 align-items-center">
+    {% csrf_token %}
+
+    <div class="d-flex flex-wrap gap-5 justify-content-center add-form">
+        {% for field in fields %}
+        <div class="form-group col-5">
+            <label for="{{field.name}}">{{field.label}}</label>
+            {% if field.type == "input" %}
+            <input
+                type="{{field.data}}"
+                name="{{field.name}}"
+                id="{{field.name}}"
+                placeholder="{{field.placeholder}}"
+                class="form-control"
+            />
+            {% else %}
+                {% if field.type == "select multiple" %}
+                <select name="{{field.name}}" id="{{field.name}}" class="form-select" multiple>
+                {% else %}
+                <select name="{{field.name}}" id="{{field.name}}" class="form-select">
+                    <option value="0">{{field.placeholder}}</option>
+                {% endif %}
+                    {% for option in field.data %}
+                    {% if option.name %}
+                    <option value="{{option.id}}">{{option.name}}</option>
+                    {% else %}
+                    <option value="{{option.id}}">{{option.model}} - {{option.plate}}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+    <button type="submit" class="btn btn-primary col-4">Cadastrar</button>
+    {% if title == "Ordens de Serviço" %}
+    <a href="/orders" class="btn btn-success col-4">Ver Ordens</a>
+    {% endif %}
+</form>
+
+<script>
+    const dateInput = document.querySelector("#conclusion_date");
+
+    if (dateInput) {
+        const date = new Date();
+    
+        dateInput.setAttribute("min", date.toISOString().substring(0, 10));
+    }
+</script>
+
+{% endblock %}

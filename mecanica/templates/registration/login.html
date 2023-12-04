@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block title %}Login - Teteu Pitstop{% endblock %} {% block content %}
+
+{% if form.errors and request.resolver_match.url_name == "login" %}
+<div class="alert alert-danger" style="margin-top: -3em;">Login inválido!</div>
+{% endif %}
+
+<form method="post" class="container-sm d-flex flex-column gap-5 align-items-center">
+    {% csrf_token %}
+
+    <h2>Login</h2>
+
+    <div class="form-group col-4">
+        <label for="username">Nome de usuário</label>
+        <input type="text" name="username" id="username" placeholder="Digite o nome" class="form-control" />
+    </div>
+    <div class="form-group col-4">
+        <label for="password">Senha:</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Digite a senha" />
+    </div>
+
+    <button type="submit" class="btn btn-primary col-4">Entrar</button>
+</form>
+
+{% endblock %}

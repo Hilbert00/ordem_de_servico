@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        {% load static %} {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
+
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{% block title %}Teteu Pitstop{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'styles/globals.css' %}" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    </head>
+    <body>
+        <header class="d-flex justify-content-between px-5 align-items-center">
+            {% if request.resolver_match.url_name == "login" %}
+            <a href="/" class="mx-auto" id="dashboard-title">Teteu Pitstop</a>
+            {% else %}
+            <a href="/" id="dashboard-title">Teteu Pitstop</a>
+            <div class="d-flex align-items-center gap-5">
+                <a href="/orders/add" class="btn" id="dashboard-button">Ordens de Serviço</a>
+                <a href="/accounts/logout">
+                    <i class="fa-solid fa-right-from-bracket text-white h1"></i>
+                </a>
+            </div>
+            {% endif %}
+        </header>
+        
+        <main class="my-5">{% block content %} {% endblock %}</main>
+
+        <footer class="w-100">
+            <p class="text-center">Nicolas Hilbert · 2023</p>
+        </footer>
+    </body>
+</html>
