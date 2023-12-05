@@ -24,9 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-3zfptte1q5j5axl$bpg%_&zo@xt+@)5iwv496qk7#ei3rw@d3i"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com','https://*.127.0.0.1']
 
 
 # Application definition
@@ -78,7 +79,7 @@ WSGI_APPLICATION = "mecanica.wsgi.application"
 
 DATABASES = {
     "default": dj_database_url.config(
-        default="",
+        default="postgres://admin:xCRIuQ85oIPC34tN2QR1PtytprMvLb1C@dpg-cln5s0sjtl8s73981020-a.oregon-postgres.render.com/ordem_de_servico",
         conn_max_age=600
     )
 }
