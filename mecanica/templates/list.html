@@ -32,6 +32,16 @@
                             
                         {% endfor %}
                     </ul>
+
+                    <div class="card-body">
+                        {% if section.title == "Peças" %}
+                        <a href="/parts/edit/{{elements.0.value}}" class="card-link"><i class="fa-solid fa-pen"></i></a>
+                        <a href="/parts/delete/{{elements.0.value}}" class="card-link"><i class="fa-solid fa-trash"></i></a>
+                        {% else %}
+                        <a href="{{request.path}}edit/{{elements.0.value}}" class="card-link"><i class="fa-solid fa-pen"></i></a>
+                        <a href="{{request.path}}delete/{{elements.0.value}}" class="card-link"><i class="fa-solid fa-trash"></i></a>
+                        {% endif %}
+                      </div>
                 </div>
             </div>
             {% endfor %}
